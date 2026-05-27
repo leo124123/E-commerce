@@ -37,8 +37,8 @@ export default function Hero() {
 
       <div className="hero__overlay">
         <div className="hero__copy">
-          <h1>SHOWTIME</h1>
-          <p>FT. ULTRA, FUTURE & KING.</p>
+          <h1 className='titulo'>SHOWTIME</h1>
+          <p className='parrafo'>FT. ULTRA, FUTURE & KING.</p>
           <button className="hero__cta">SHOP NOW</button>
         </div>
       </div>

@@ -55,14 +55,21 @@
   pointer-events: auto;
   color: #fff;
 }
+.titulo { 
+  color:#e8e3e3  !important;
+}
+
+.parrafo{ 
+  color: #e8e3e3 !important;
+}
 
 .hero__copy h1 {
   margin: 0 0 16px;
-  color: #fff;
+  color: #e8e3e3;
   font-size: clamp(3rem, 5vw, 5rem);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  text-shadow: 0 16px 40px #fff;
+  text-shadow: 0 16px 40px #030303;
 }
 
 .hero__copy p {
