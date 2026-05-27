@@ -1,0 +1,70 @@
+/* home.css */
+.container{ max-width:1418px; margin:0 auto; }
+.categories{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:40px 16px; }
+.category{ background:#f2efe9; padding:80px 20px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:700 }
+
+@media(max-width:900px){
+  .categories{ grid-template-columns:repeat(2,1fr) }
+}
+
+/* promo top strip and large rounded banner */
+.promo-top{
+  background:#111;
+  color:#fff;
+  font-size:13px;
+  text-align:center;
+  padding:6px 0;
+}
+.banner-container{
+  padding:18px 20px 0 20px;
+}
+.banner{
+  background:#6f8fa0; /* blueish */
+  border-radius:18px;
+  padding:10px 10px;
+  border:8px solid #e9e6e2;
+}
+.banner-inner{
+  text-align:center;
+  color: #fff;
+}
+.banner-inner small{
+  display:block;
+  letter-spacing:4px;
+  margin-bottom:14px;
+}
+.banner-inner h1{
+  font-size:40px;
+  margin:0 0 10px 0;
+  font-weight:200;
+}
+.banner-inner p{ 
+  margin:0;
+   opacity:0.9 
+  
+}
+
+.featured-intro p{
+  max-width: 1200px;
+  margin: -60px auto -125px;
+  text-align: center;
+  font-size: clamp(1.3rem, 1.8vw, 1.15rem);
+  line-height: 1.8;
+  color: #222;
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:12px;
+  margin: 20px 0 60px;
+  padding: 0 16px;
+}
+
+@media (max-width: 1000px){
+  .product-grid{ grid-template-columns: repeat(2, 1fr) }
+}
+
+@media (max-width: 520px){
+  .product-grid{ grid-template-columns: 1fr }
+}
