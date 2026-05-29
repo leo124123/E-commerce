@@ -4,19 +4,80 @@
 
 .products-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 .products-header p {
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: #777;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  color: #2f3b6b;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .products-header h2 {
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 300;
+  font-size: clamp(3rem, 6vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.products-subtext {
+  max-width: 680px;
+  margin: 1rem auto 0;
+  color: #555;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.products-toolbar {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 520px;
+  padding: 1rem 1.2rem;
+  border: 1px solid #d7d7e1;
+  border-radius: 18px;
+  font-size: 1rem;
+  color: #111;
+  background: #f8f9ff;
+}
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.category-pill {
+  border: 1px solid #dfe0f2;
+  background: #fff;
+  color: #454f71;
+  padding: 0.85rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.category-pill:hover,
+.category-pill.active {
+  transform: translateY(-2px);
+  background: #1b1f44;
+  color: #fff;
+  border-color: #1b1f44;
+}
+
+.products-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  color: #4b4f6a;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
 }
 
 .product-grid {
@@ -48,4 +109,14 @@
 .product-price {
   font-size: 1.2rem;
   font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .products-toolbar {
+    gap: 0.8rem;
+  }
+
+  .products-summary {
+    justify-content: flex-start;
+  }
 }

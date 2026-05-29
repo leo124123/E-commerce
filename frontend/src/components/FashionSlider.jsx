@@ -38,6 +38,24 @@ const products = [
     subtitle: 'Professional Soccer Cleats',
     price: '$260.00',
   },
+  {
+    image: img4,
+    title: 'KING ELITE',
+    subtitle: 'Professional Soccer Cleats',
+    price: '$260.00',
+  },
+  {
+    image: img4,
+    title: 'KING ELITE',
+    subtitle: 'Professional Soccer Cleats',
+    price: '$260.00',
+  },
+  {
+    image: img4,
+    title: 'KING ELITE',
+    subtitle: 'Professional Soccer Cleats',
+    price: '$260.00',
+  },
 ]
 
 export default function FashionSlider() {

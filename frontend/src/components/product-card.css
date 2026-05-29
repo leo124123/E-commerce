@@ -3,6 +3,7 @@
   border-radius: 14px;
   overflow: hidden;
   background: transparent;
+  cursor: pointer;
 }
 .product-card__media{
   position: relative;
