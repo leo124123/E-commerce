@@ -7,6 +7,7 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 const cartRoutes = require('./routes/cart');
 const productRoutes = require('./routes/products');
+const checkoutRoutes = require('./routes/checkout');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 // routes
 app.use('/api/auth', authRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/checkout', checkoutRoutes);
 app.use('/api/products', productRoutes);
 
 

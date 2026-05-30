@@ -1,8 +1,10 @@
 import Hero from '../components/hero'
 import '../components/hero.css'
 import './home.css'
-
 import FashionSlider from '../components/FashionSlider'
+import Profesional from '../components/Profesional'
+import PumaSection from '../components/PumaSection'
+import CantMissPicks from '../components/CantMissPicks'
 
 export default function Home() {
   return (
@@ -20,6 +22,10 @@ export default function Home() {
       </section>
 
       <FashionSlider />
+      <Profesional />
+      <PumaSection />
+      <CantMissPicks />
+
     </main>
   )
 }

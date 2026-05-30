@@ -285,7 +285,7 @@ export default function Cart() {
             <p>Subtotal</p>
             <strong>${totalPrice.toFixed(2)}</strong>
           </div>
-          <button className="checkout-btn" type="button">
+          <button className="checkout-btn" type="button" onClick={() => navigate('/checkout')}>
             Continuar con el pago
           </button>
           <p className="checkout-note">

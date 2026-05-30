@@ -9,25 +9,28 @@
 }
 
 .shipping-bar{
-  background: #111;
+  background: white;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-weight: 700;
 }
 
 .shipping-bar__inner{
   max-width: 1420px;
   margin: 0 auto;
-  padding: 8px 18px;
+  padding: 10px 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  color: #000
+ 
 }
 
 .shipping-bar__inner a{
-  color: #fff;
+  color: #000;
   text-decoration: underline;
   font-weight: 700;
 }

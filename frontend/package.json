@@ -22,7 +22,9 @@
     "react-router-dom": "^7.15.1",
     "react-toastify": "^11.1.0",
     "router": "^2.2.0",
-    "swiper": "^12.1.4"
+    "swiper": "^12.1.4",
+    "@stripe/react-stripe-js": "^6.5.0",
+    "@stripe/stripe-js": "^9.7.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
