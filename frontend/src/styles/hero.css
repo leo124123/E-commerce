@@ -2,6 +2,7 @@
 .hero{
   position: relative;
   overflow: hidden;
+  object-fit: cover;
 }
 .hero__slide{
   position:relative;

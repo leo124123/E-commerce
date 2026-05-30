@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { SiPuma } from "react-icons/si";
+
 import {
   ShoppingCart,
   Search,
@@ -74,7 +76,8 @@ export default function Nav() {
       <div className="site-header__inner">
 
         <div className="logo">
-          <Link to="/">PUMA</Link>
+          <Link to="/"><SiPuma />
+</Link>
         </div>
 
         <nav

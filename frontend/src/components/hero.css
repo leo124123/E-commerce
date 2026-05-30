@@ -66,7 +66,7 @@
 .hero__copy h1 {
   margin: 0 0 16px;
   color: #e8e3e3;
-  font-size: clamp(3rem, 5vw, 5rem);
+  font-size: clamp(1rem, 4vw, 4rem);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-shadow: 0 16px 40px #030303;
