@@ -1,0 +1,72 @@
+/* Promo Badge - Bottom Left */
+.promo-badge {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 800;
+  animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.promo-badge__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: linear-gradient(135deg, #ff285f 0%, #ff8a00 100%);
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 999px;
+  box-shadow: 0 18px 50px rgba(255, 40, 95, 0.3);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.promo-badge__text {
+  white-space: nowrap;
+}
+
+.promo-badge__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.promo-badge__close:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .promo-badge {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .promo-badge__content {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+}
