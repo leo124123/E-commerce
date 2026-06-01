@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { SiPuma } from "react-icons/si";
+import { resolveProductImage } from '../utils/imageResolver'
 
 import {
   ShoppingCart,
@@ -23,6 +24,9 @@ export default function Nav() {
     }
   })
   const [cartCount, setCartCount] = useState(0)
+  const [showSearch, setShowSearch] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const searchInputRef = useRef(null)
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -63,8 +67,90 @@ export default function Nav() {
     navigate('/login')
   }
 
+  const handleSearchToggle = () => {
+    setShowSearch(v => !v)
+    setTimeout(() => {
+      if (searchInputRef.current) searchInputRef.current.focus()
+    }, 50)
+  }
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault()
+    const q = (searchQuery || '').trim()
+    if (!q) return setShowSearch(false)
+    setShowSearch(false)
+    setSearchQuery('')
+    navigate(`/products?search=${encodeURIComponent(q)}`)
+  }
+
+  const handleFavoritesClick = () => {
+    const token = localStorage.getItem('token')
+    if (!token || !user) {
+      navigate('/login')
+      return
+    }
+    navigate('/favorites')
+  }
+
+  const handleTrendingSearch = (term) => {
+    const q = term.trim()
+    if (!q) return
+    setShowSearch(false)
+    setSearchQuery(q)
+    navigate(`/products?search=${encodeURIComponent(q)}`)
+  }
+
+  const trendingSearches = [
+    'Speedcat',
+    'Ballet',
+    'Speedcat Ballet',
+    'Chivas',
+    'Pokemon',
+    'BMW',
+  ]
+
+  const suggestedProducts = [
+    {
+      title: 'FUTURE 9 ULTIMATE',
+      subtitle: "Men's Firm Ground Soccer Cleats",
+      price: '$245.00',
+      image: "imgi_32_FUTURE-9-ULTIMATE-Men's-Firm-Ground-Soccer-Cleats.jpg",
+    },
+    {
+      title: 'FUTURE 9 PRO',
+      subtitle: "Men's Firm/Artificial Ground Soccer Cleats",
+      price: '$145.00',
+      image: 'imgi_35_Artificial-Ground-Soccer-Cleats.jpg',
+    },
+    {
+      title: 'FUTURE 9 MATCH',
+      subtitle: "Men's Firm/Artificial Ground Soccer Cleats",
+      price: '$95.00',
+      image: 'imgi_37_Artificial-Ground-Soccer-Cleats.jpg',
+    },
+    {
+      title: 'FUTURE 9 MATCH FUSION',
+      subtitle: "Women's Firm/Artificial Ground Soccer Cleats",
+      price: '$95.00',
+      image: "imgi_34_FUTURE-9-ULTIMATE-Women's-Firm-Ground-Soccer-Cleats.jpg",
+    },
+    {
+      title: 'FUTURE 9 ULTIMATE',
+      subtitle: "Women's Firm Ground Soccer Cleats",
+      price: '$245.00',
+      image: "imgi_34_FUTURE-9-ULTIMATE-Women's-Firm-Ground-Soccer-Cleats.jpg",
+    },
+    {
+      title: 'ULTRA 6 ULTIMATE',
+      subtitle: "Men's Firm Ground Soccer Cleats",
+      price: '$240.00',
+      image: "imgi_33_ULTRA-6-ULTIMATE-Men's-Firm-Ground-Soccer-Cleats.jpg",
+    },
+  ]
+
   return (
-    <header className="site-header">
+    <>
+      <header className="site-header">
 
       <div className="shipping-bar">
         <div className="shipping-bar__inner">
@@ -95,17 +181,21 @@ export default function Nav() {
 
         <div className="nav-actions">
 
-          <button
-            className="search-btn"
-            aria-label="search"
-          >
-            <Search size={16} />
-            <span>SEARCH</span>
-          </button>
+          <div className="search-wrapper">
+            <button
+              className="search-btn"
+              aria-label="search"
+              onClick={handleSearchToggle}
+            >
+              <Search size={16} />
+              <span>SEARCH</span>
+            </button>
+          </div>
 
           <button
             className="icon-btn"
             aria-label="favorites"
+            onClick={handleFavoritesClick}
           >
             <Heart size={18} />
           </button>
@@ -159,6 +249,66 @@ export default function Nav() {
 
       </div>
 
+      {showSearch && (
+        <div className="search-panel">
+          <div className="search-panel__inner">
+            <form className="search-panel-form" onSubmit={handleSearchSubmit}>
+              <div className="search-panel-field">
+                <input
+                  ref={searchInputRef}
+                  className="search-panel-input"
+                  placeholder="SEARCH PUMA.COM"
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                />
+                <button type="submit" className="search-panel-submit" aria-label="submit search">
+                  <Search size={20} />
+                </button>
+              </div>
+              <button type="button" className="search-panel-close" onClick={handleSearchToggle} aria-label="close search">×</button>
+            </form>
+
+            <div className="search-panel-grid">
+              <div className="search-panel-column">
+                <h3>TRENDING SEARCHES</h3>
+                <ul className="trending-list">
+                  {trendingSearches.map((term) => (
+                    <li key={term} className="trending-item">
+                      <button type="button" onClick={() => handleTrendingSearch(term)}>{term}</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="search-panel-column">
+                <h3>SUGGESTED PRODUCTS</h3>
+                <div className="suggested-list">
+                  {suggestedProducts.map((product) => (
+                    <div key={product.title} className="suggested-card">
+                      <div className="suggested-card__image">
+                        <img
+                          src={resolveProductImage(product.image)}
+                          alt={product.title}
+                          onError={event => {
+                            event.target.onerror = null
+                            event.target.src = 'https://placehold.co/120x120?text=No+Image&bg=ffffff&fc=000000'
+                          }}
+                        />
+                      </div>
+                      <div className="suggested-card__details">
+                        <strong>{product.title}</strong>
+                        <p>{product.subtitle}</p>
+                        <span>{product.price}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
     </header>
+    </>
   )
 }

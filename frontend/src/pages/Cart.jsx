@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import './cart.css'
+import { resolveProductImage } from '../utils/imageResolver'
 
 export default function Cart() {
   const navigate = useNavigate()
@@ -223,7 +224,7 @@ export default function Cart() {
               <div className="cart-item-image">
                 <img
                   src={
-                    item.product?.images?.[0] ||
+                    resolveProductImage(item.product?.images?.[0]) ||
                     '/assets/sample-shoe.jpg'
                   }
                   alt={item.product?.title || 'Product'}
@@ -315,7 +316,7 @@ export default function Cart() {
                 <div className="recommend-image">
                   <img
                     src={
-                      product.images?.[0] ||
+                      resolveProductImage(product.images?.[0]) ||
                       '/assets/sample-shoe.jpg'
                     }
                     alt={product.title}
