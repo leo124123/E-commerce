@@ -7,7 +7,9 @@ import {
   ShoppingCart,
   Search,
   User,
-  Heart
+  Heart,
+  Menu,
+  X
 } from 'lucide-react'
 
 import '../styles/nav.css'
@@ -25,6 +27,7 @@ export default function Nav() {
   })
   const [cartCount, setCartCount] = useState(0)
   const [showSearch, setShowSearch] = useState(false)
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const searchInputRef = useRef(null)
 
@@ -72,6 +75,14 @@ export default function Nav() {
     setTimeout(() => {
       if (searchInputRef.current) searchInputRef.current.focus()
     }, 50)
+  }
+
+  const handleMobileNavToggle = () => {
+    setMobileNavOpen(v => !v)
+  }
+
+  const handleMobileLinkClick = () => {
+    setMobileNavOpen(false)
   }
 
   const handleSearchSubmit = (e) => {
@@ -155,11 +166,30 @@ export default function Nav() {
       <div className="shipping-bar">
         <div className="shipping-bar__inner">
           <span>FREE SHIPPING ON ORDERS $60+</span>
-          <Link to="/">SEE DETAILS</Link>
+          <Link to="./shipping">SEE DETAILS</Link>
         </div>
       </div>
 
       <div className="site-header__inner">
+
+        <div className="mobile-left-actions">
+          <button
+            type="button"
+            className="mobile-nav-toggle"
+            aria-label={mobileNavOpen ? 'Close menu' : 'Open menu'}
+            onClick={handleMobileNavToggle}
+          >
+            {mobileNavOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+          <button
+            type="button"
+            className="icon-btn mobile-search-toggle"
+            aria-label="search"
+            onClick={handleSearchToggle}
+          >
+            <Search size={18} />
+          </button>
+        </div>
 
         <div className="logo">
           <Link to="/"><SiPuma />
@@ -167,21 +197,20 @@ export default function Nav() {
         </div>
 
         <nav
-          className="main-nav"
+          className={`main-nav ${mobileNavOpen ? 'mobile-open' : ''}`}
           role="navigation"
           aria-label="Main menu"
         >
-          <Link to="/products">WOMEN</Link>
-          <Link to="/products">MEN</Link>
-          <Link to="/products">KIDS</Link>
-          <Link to="/products">LIFESTYLE</Link>
-          <Link to="/products">SPORT</Link>
-          <Link to="/products">SALE</Link>
+          <Link to="/products" onClick={handleMobileLinkClick}>WOMEN</Link>
+          <Link to="/products" onClick={handleMobileLinkClick}>MEN</Link>
+          <Link to="/products" onClick={handleMobileLinkClick}>KIDS</Link>
+          <Link to="/products" onClick={handleMobileLinkClick}>LIFESTYLE</Link>
+          <Link to="/products" onClick={handleMobileLinkClick}>SPORT</Link>
+          <Link to="/products" onClick={handleMobileLinkClick}>SALE</Link>
         </nav>
 
         <div className="nav-actions">
-
-          <div className="search-wrapper">
+          <div className="desktop-search-wrapper">
             <button
               className="search-btn"
               aria-label="search"
